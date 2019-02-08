@@ -2,6 +2,8 @@ package ru.stqa.pft.adressbook;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
 import org.openqa.selenium.*;
@@ -18,10 +20,6 @@ public class GroupCreationTests {
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  }
-
-  @Test
-  public void testUntitledTestCase() throws Exception {
     driver.get("https://men-men-s-01.codersguru.pl/");
     driver.findElement(By.name("button")).click();
     driver.findElement(By.id("username")).click();
@@ -31,6 +29,10 @@ public class GroupCreationTests {
     driver.findElement(By.id("password")).clear();
     driver.findElement(By.id("password")).sendKeys("qweasdzxc");
     driver.findElement(By.id("_submit")).click();
+  }
+
+  @Test
+  public void testGroupCreation() throws Exception {
     driver.findElement(By.xpath("//img[@alt='settings-icon']")).click();
     driver.findElement(By.xpath("//button")).click();
   }
